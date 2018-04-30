@@ -47,8 +47,8 @@ export class AppModule { }
 
 
 
-# What is the component?
-Component is a class. Component decorator allows to mark as an Angular component .
+# What is a component?
+The component is a class. Component decorator allows to mark as an Angular component .
 Components are the most basic building block of an UI in an Angular application. 
 It provides additional metadata that determines how the component should be processed, instantiated and used at runtime.
 A component needs to configured in NgModule in order to be usable by another component or application.
@@ -88,7 +88,7 @@ The providers are used to configure the service in component to NgModule class. 
 	7) ngAfterViewChecked()
 	8) ngDestory()
 
-# What is the service?
+# What is a service?
 The service is a class. An injector decorator allows to mark as an angular service.
 Service serves data to components.
 
