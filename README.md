@@ -102,13 +102,13 @@ For example. Sometime UI doesn't want to execution, but excepting directly resul
 The ployfills supports to all modern browsers.
 
 # How many types of form?
-There are two type of form in an Angular
-Reactive forms are based on reactive style of programming. Following are key aspects of reactive forms:
+
+  # Reactive forms are based on reactive style of programming. Following are key aspects of reactive forms:
 	• These forms are synchronous in nature unlike template-driven forms.
-	• These forms require inclusion/import of ReactiveFormsModule in the root module, AppModule which is placed in the root folder of the app. Following is the sample cod
+	• These forms require inclusion/import of ReactiveFormsModule in the root module
 	• Form controls are created and managed in component code rather than the UI unlike the template-driven forms.
 	• Validation logic is placed within Component rather than the UI code as like template driven 
-• Template Driven Form
+ # Template Driven Form
 	• Template-driven forms is create like native way.
 	• These forms are asynchronous in nature.
 	• These forms require import of FormsModule in the root module
@@ -134,6 +134,5 @@ Reactive forms are based on reactive style of programming. Following are key asp
 	• RouteConfigLoadEnd
 
 # What is Injector bubbling?
-When a component request to dependency. Angular tries to satisfy that dependency with a provider registered in that component of own injector. 
-If component's injectors not able to resolve the dependency ,It passes the request up to its parent component's injector. If that injector can't satisfy the request , It passes to root component
+When a component request to dependency. Angular tries to satisfy that dependency with a provider registered in that component of own injector. If component's injectors not able to resolve the dependency,It passes the request up to its parent component's injector. If that injector can't satisfy the request , It passes to root component
 until it's satisfy. If It runs out of ancestors, angular throws an error.
