@@ -18,7 +18,7 @@ Below are the core concepts
 	9) Providers
 	10) Injectors
 	
-# What is a module in Angular ?
+# What is a module?
 Every application has a root module conventionally named as appModule. 
 which provides bootstrap mechanism that launches the application.
 Typically It contains many functional module.
@@ -47,7 +47,7 @@ export class AppModule { }
 
 
 
-# What is the component in Angular ?
+# What is the component?
 Component is a class. Component decorator allows to mark as an Angular component .
 Components are the most basic building block of an UI in an Angular application. 
 It provides additional metadata that determines how the component should be processed, instantiated and used at runtime.
