@@ -1,4 +1,4 @@
-# angular-interview-questions-answers
+# Angular-interview-questions-answers
 Angular  Interview Questions and Answers
 
 
@@ -125,7 +125,7 @@ The ployfills supports to all modern browsers.
 	•   outlet
 
 # What are the router events ?
-	•  NavigationStart
+	• NavigationStart
 	• NativationEnd
 	• NavigationCancel
 	• NavigationError
