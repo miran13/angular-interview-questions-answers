@@ -110,6 +110,49 @@ The providers are used to configure the service in component to NgModule class. 
 
 	
 	2) Intercept input property changes with a setter
+	
+	Example. ParentComponent.ts
+	import {
+	  Component,
+	  OnInit
+	} from '@angular/core';
+
+	@Component({
+	  selector: 'app-parent',
+	  template: `
+	    <p>
+	      parent works!
+	      <app-child [childMessage]="parentMessage"></app-child>
+	    </p>
+	  `
+	})
+	export class ParentComponent {
+	  parentMessage = 'A Message passed from parent to child';
+	}
+	ChildComponent.ts
+	
+	import {
+  	Component,
+  	Input
+	} from '@angular/core';
+
+	@Component({
+  	selector: 'app-child',
+ 	 template: `   <p>  child works  =>  {{childMessage}}  </p>   `
+       })
+	export class ChildComponent {
+  	private _childMessage = '';
+  
+  	@Input()
+  	set childMessage(name: string) {
+    	this._childMessage = name
+         }
+
+  	get childMessage(): string {
+    	return this.childMessage = this._childMessage;
+       }
+       }
+
 	3) Intercept input property changes with the ngOnChanges
 	4) Parent listens to child event
 	5) Parent interacts with child via local variable
