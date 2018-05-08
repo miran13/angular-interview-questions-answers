@@ -71,12 +71,52 @@ The providers are used to configure the service in component to NgModule class. 
 
 # How parent component pass the data to child component ?
 	1) Pass the data from parent to child with input binding
+	
+	Example. ParentComponent.ts
+	import {
+	  Component,
+	  OnInit
+	} from '@angular/core';
+
+	@Component({
+	  selector: 'app-parent',
+	  template: `
+	    <p>
+	      parent works!
+	      <app-child [childMessage]="parentMessage"></app-child>
+	    </p>
+	  `
+	})
+	export class ParentComponent {
+	  parentMessage = 'A Message passed from parent to child';
+	}
+
+         ChildComponent.ts
+	 import {
+ 	 Component,
+ 	 Input
+	} from '@angular/core';
+
+	@Component({
+ 	 selector: 'app-child',
+ 	 template: `
+  	  <p>
+  	    child works  =>  {{childMessage}}
+   	 </p>  `
+	})
+	export class ChildComponent {
+ 	 @Input() childMessage;
+	}
+
+	
 	2) Intercept input property changes with a setter
 	3) Intercept input property changes with the ngOnChanges
 	4) Parent listens to child event
 	5) Parent interacts with child via local variable
 	6) Parent calls on @Vaildchild
-	7) Parent and children communicate via a servi
+	7) Parent and children communicate via a service
+	
+	
 
 # What are the phases in an angular life cycle?
 	1) ngOnChanges()
