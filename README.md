@@ -224,12 +224,6 @@ The providers are used to configure the service in component to NgModule class. 
 			     </p> `
 		}) 
 		export class ParentComponent {
-
-		  parentMessage = 'Initial Parent Message';
-
-		  parentReceiveMessage(msg:string){
-			this.parentMessage=msg;
-		      }
 		}
 
 		child.component.ts
