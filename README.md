@@ -154,6 +154,63 @@ The providers are used to configure the service in component to NgModule class. 
        }
 
 	3) Intercept input property changes with the ngOnChanges
+	
+	Example. 
+	Parent.component.ts
+	import {
+ 	 Component,
+  	OnInit
+	} from '@angular/core';
+
+	@Component({
+  	selector: 'app-parent',
+  	template: `
+    	<p>
+      	parent works!
+      	<input type="text" [(ngModel)]="parentMessage" >
+      	<button (click)="updateParentMessage(parentMessage)">Submit</button>
+      	<app-child [childMessage]="parentMessage"></app-child>
+    	</p>`})
+	
+	export class ParentComponent {
+
+  	parentMessage = 'Parent Message';
+
+  	updateParentMessage(parentMsg:string) {
+      	this.parentMessage=parentMsg; }
+	}
+	
+	Child.Component.ts
+	import {
+  	Component,
+  	Input,
+  	OnChanges,
+  	SimpleChanges,
+  	SimpleChange
+	} from '@angular/core';
+
+	@Component({
+  	selector: 'app-child',
+  	template: ` <p>   New a message from parent to child   =>  {{ newChildMessage }}   </p>   ` })
+       export class ChildComponent implements OnChanges {
+
+       @Input() childMessage: string
+
+       oldChildMessage: string;
+
+       newChildMessage: string;
+
+       ngOnChanges(changes: {  [propKey: string]: SimpleChange }) {
+
+       for (let propName in changes) {
+         let changedProp = changes[propName];
+         if(!changedProp.isFirstChange() ){ 
+         this.newChildMessage = JSON.stringify(changedProp.previousValue);
+       }
+     }
+    }
+  }
+	
 	4) Parent listens to child event
 	5) Parent interacts with child via local variable
 	6) Parent calls on @Vaildchild
