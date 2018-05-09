@@ -70,7 +70,7 @@ Dependency Injection is often called DI. Dependency Injection is wired into an a
 The providers are used to configure the service in component to NgModule class. Andinjector can use the create a new instance.
 
 # How parent component pass the data to child component ?
-	1) Pass the data from parent to child with input binding
+	# 1) Pass the data from parent to child with input binding
 	
 	Example. ParentComponent.ts
 	import {
@@ -109,7 +109,7 @@ The providers are used to configure the service in component to NgModule class. 
 	}
 
 	
-	2) Intercept input property changes with a setter
+	# 2) Intercept input property changes with a setter
 	
 	Example. ParentComponent.ts
 	import {
@@ -153,7 +153,7 @@ The providers are used to configure the service in component to NgModule class. 
        }
        }
 
-	3) Intercept input property changes with the ngOnChanges
+	# 3) Intercept input property changes with the ngOnChanges
 	
 	Example. 
 	Parent.component.ts
