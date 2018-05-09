@@ -280,7 +280,7 @@ The providers are used to configure the service in component to NgModule class. 
 	      }
 	}
 
- Child.component.ts
+      Child.component.ts
 	import { Component,Input,EventEmitter,Output } from '@angular/core';
 
 		@Component({
