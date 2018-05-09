@@ -211,6 +211,54 @@ The providers are used to configure the service in component to NgModule class. 
   }
 	
 	4) Parent listens to child event
+	
+		Example.
+		Parent.component.ts
+		import { Component } from '@angular/core';
+
+		@Component({
+		  selector: 'app-parent',
+		  template: `<p>
+			     Parent message  <input type="text" [(ngModel)]="parentMessage">
+			    <app-child (childReceiveMessage)="parentReceiveMessage($event)" [childMessage]="parentMessage"></app-child>
+			     </p> `
+		}) 
+		export class ParentComponent {
+
+		  parentMessage = 'Initial Parent Message';
+
+		  parentReceiveMessage(msg:string){
+			this.parentMessage=msg;
+		      }
+		}
+
+		child.component.ts
+
+		import { 
+		  Component,
+		  Input,
+		  EventEmitter,
+		  Output
+		} from '@angular/core';
+
+		@Component({
+		  selector: 'app-child',
+		  template: `<p> Child Message <input #childMsg (keyup)="onKey(childMsg.value)" value="{{childMessage}}"> </p>`
+		  })
+
+		export class ChildComponent {
+
+		  @Input() childMessage: string;
+
+		  @Output() childReceiveMessage = new EventEmitter<string>();
+
+		  onKey(childMsg: string) {
+		    this.childReceiveMessage.emit(childMsg);
+		  }
+
+		}
+
+	
 	5) Parent interacts with child via local variable
 	6) Parent calls on @Vaildchild
 	7) Parent and children communicate via a service
