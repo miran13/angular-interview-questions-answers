@@ -168,8 +168,7 @@ The providers are used to configure the service in component to NgModule class. 
     	<p>
       	parent works!
       	<input type="text" [(ngModel)]="parentMessage" >
-      	<button (click)="updateParentMessage(parentMessage)">Submit</button>
-      	<app-child [childMessage]="parentMessage"></app-child>
+       	<app-child [childMessage]="parentMessage"></app-child>
     	</p>`})
 	
 	export class ParentComponent {
