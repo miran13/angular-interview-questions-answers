@@ -291,9 +291,7 @@ The providers are used to configure the service in component to NgModule class. 
 
 		childMessage: string;
 
-		  @Output() childReceiveMessage = new EventEmitter<string>();
-
-		  callChild() {
+		 callChild() {
 		  this.childMessage="Child Message";
 		  }
 
