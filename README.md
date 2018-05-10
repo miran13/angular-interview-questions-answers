@@ -298,6 +298,51 @@ The providers are used to configure the service in component to NgModule class. 
 		}
 			
 	6) Parent calls on @Vaildchild
+	
+	https://stackblitz.com/github/dharmendra1234/Angular_examples-component-interactions
+	
+	import { Component, ViewChild } from '@angular/core';
+	import { ChildComponent } from '../child/child.component';
+
+
+	@Component({
+	  selector: 'app-parent',
+	  template: `<p>
+		    <button (click)="callChild()"> Call child from parent </button>
+		      <app-child #child></app-child>
+		     </p> `
+	}) 
+	export class ParentComponent {
+	  @ViewChild(ChildComponent)
+	  private childComponent: ChildComponent;
+
+	  callChild(){
+	    this.childComponent.callChild();
+	  }
+	}
+	
+	import { Component,Input,EventEmitter,Output } from '@angular/core';
+
+	@Component({
+	  selector: 'app-child',
+	  template: `
+		    <div *ngIf="childMessage">
+		    <p>
+		    {{childMessage}} => Parent calls an @ViewChild()
+		    </p>
+		    </div>`
+	  })
+
+	export class ChildComponent {
+
+	childMessage: string;
+
+	  callChild() {
+	  this.childMessage="Child Message";
+	  }
+
+	}
+
 	7) Parent and children communicate via a service
 	
 	
