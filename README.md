@@ -403,3 +403,28 @@ The ployfills supports to all modern browsers.
 # What is Injector bubbling?
 When a component request to dependency. Angular tries to satisfy that dependency with a provider registered in that component of own injector. If component's injectors not able to resolve the dependency,It passes the request up to its parent component's injector. If that injector can't satisfy the request , It passes to root component
 until it's satisfy. If It runs out of ancestors, angular throws an error.
+
+# How Angular 2 is different than angular 1 in term of performance ?
+
+Angular 1 uses two-way data bindings to keep views in sync with data models. This creates a bi-directional MVVM relationship between views and models. If a user input is updated in the view, it will trigger the digest cycle to recursively check the DOM for property changes. Likewise, if the underlying data changes from an asynchronous event (like an $http request), then the same recursive check fires.
+
+While this keeps views in sync with data models, it can quickly cause performance issues if enough watchers are added to the DOM. Since the entire DOM is recursively checked for each event, the digest cycle can cause unpredictable cascading changes that slow things down exponentially.
+
+Unidirectional data flow
+Unlike Angular 1's two-way data bindigns, Angular 2 uses unidirectional data flow to detect changes. Similar to React's flux architecture, data flows in one direction every time a change event occurs.
+
+Angular 2 leverages the component tree to ensure that data always flows from top to bottom. Every component you create in Angular 2 has its own change detector. When a user event occurs, change detection occurs from top to bottom in the component tree, starting with the root component.
+
+This top down strategy is more predictable than the digest cycle. It ensures everything gets updated in one run. Additionally, we know that every change we see in our view came from the underlying component (and not from changes made to the view itself).
+Why is this better?
+Angular 2 change detection works better with modern just-in-time (JIT) compilers. Since every component essentially has it's own blueprint, the browser avoids having to dynamically compare properties at runtime. This drastically improves performance as the compiler can more accurately predict app behavior.
+
+This method of change detection also allows Angular to only update the parts of the DOM that have actually changed. While Angular 1 updates the entire DOM with each check, Angular 2 only redraws the elements that need updating. Since DOM manipulation is one of the most expensive JavaScript operations, this drastically improves speed and efficiency.
+
+Angular 2 Manual Change Detection
+You can manually control change detection for a component by explicitly setting the changeDetection property in the @Component decorator. For example, if you set changeDetection: ChangeDetectionStrategy.OnPush then your component will only fire change detection when its inputs change (and not for every event).
+
+Immutability and OnPush
+The main advantage of OnPush is gives you more control over change detection. By specifying when a component's change detector fires, you can avoid running unnecessary checks when inputs for that component haven't change.
+
+The one caveat with this is that OnPush only works with immutable objects. You must create a new reference to that property for the component to recognize the change. Since JavaScript objects are inherently mutable, you have to make sure you are creating a new reference to the property or change detection won't fire.
